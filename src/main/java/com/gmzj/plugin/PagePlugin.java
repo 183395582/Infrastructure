@@ -40,7 +40,7 @@ import com.gmzj.util.Tools;
  * @author 
  *
  */
-@Intercepts({@Signature(type=StatementHandler.class,method="prepare",args={Connection.class})})
+@Intercepts({@Signature(type=StatementHandler.class, method="prepare", args={Connection.class})})
 public class PagePlugin implements Interceptor {
 
 	private static String dialect = "";	//数据库方言
@@ -64,8 +64,8 @@ public class PagePlugin implements Interceptor {
 					//String countSql = "select count(0) from (" + sql+ ") as tmp_count"; //记录统计
 					String countSql = "select count(0) from (" + sql+ ")  tmp_count"; //记录统计 == oracle 加 as 报错(SQL command not properly ended)
 					PreparedStatement countStmt = connection.prepareStatement(countSql);
-					BoundSql countBS = new BoundSql(mappedStatement.getConfiguration(),countSql,boundSql.getParameterMappings(),parameterObject);
-					setParameters(countStmt,mappedStatement,countBS,parameterObject);
+					BoundSql countBS = new BoundSql(mappedStatement.getConfiguration(), countSql, boundSql.getParameterMappings(), parameterObject);
+					setParameters(countStmt, mappedStatement, countBS, parameterObject);
 					ResultSet rs = countStmt.executeQuery();
 					int count = 0;
 					if (rs.next()) {
@@ -110,7 +110,7 @@ public class PagePlugin implements Interceptor {
 	 * @throws SQLException
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private void setParameters(PreparedStatement ps,MappedStatement mappedStatement,BoundSql boundSql,Object parameterObject) throws SQLException {
+	private void setParameters(PreparedStatement ps, MappedStatement mappedStatement, BoundSql boundSql, Object parameterObject) throws SQLException {
 		ErrorContext.instance().activity("setting parameters").object(mappedStatement.getParameterMap().getId());
 		List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
 		if (parameterMappings != null) {

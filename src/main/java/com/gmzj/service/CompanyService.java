@@ -67,4 +67,12 @@ public interface CompanyService {
 	@Transactional(rollbackFor=Exception.class)
 	int delete(int id) throws Exception;
 
+	/**
+	 * 
+	 * @param type
+	 * @param toIndex 
+	 * @return
+	 * @throws Exception
+	 */
+	List<Company> findCompanys4Index(String type, int toIndex) throws Exception;
 }

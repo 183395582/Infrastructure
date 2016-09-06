@@ -1,4 +1,4 @@
-package com.gmzj.except;
+package com.gmzj.web.exception;
 
 
 /**

@@ -57,6 +57,6 @@ public interface BaseDao<T> {
 	 * @return
 	 * @throws Exception
 	 */
-	public Map<String, ?> findForMap(String sql, Object obj, String key, String value) throws Exception;
+	public Map<String, T> findForMap(String sql, Object obj, String key, String value) throws Exception;
 	
 }

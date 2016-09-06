@@ -10,8 +10,8 @@
 		
 		<sqlMapGenerator targetPackage="mybatis.system" targetProject="Infrastructure/src/main/resources/" />
 		
-		<javaClientGenerator targetPackage="mybatis.system" targetProject="Infrastructure/src/main/resources/" type="XMLMAPPER" />
-		<table tableName="t_company" domainObjectName="Company">
+		<javaClientGenerator targetPackage="mybatis.files" targetProject="Infrastructure/src/main/resources/" type="XMLMAPPER" />
+		<table tableName="t_news" domainObjectName="News">
 		</table>
 			<!-- <columnOverride column="fi_DepNo" javaType="Long" property="depNo" /> -->
 		<!-- <table tableName="t_regionmap" domainObjectName="RegionMap">

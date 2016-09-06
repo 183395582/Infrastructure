@@ -1,4 +1,4 @@
-package com.gmzj.except;
+package com.gmzj.web.exception;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.gmzj.extension;
+package com.gmzj.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

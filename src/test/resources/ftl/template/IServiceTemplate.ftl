@@ -1,15 +1,16 @@
-package com.gmzj.service;
+package com.gmzj.service.impl;
 
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gmzj.entity.News;
-import com.gmzj.entity.NewsExample;
+import com.gmzj.entity.${className};
+import com.gmzj.entity.${className}Example;
 import com.gmzj.entity.Page;
 
 
-public interface NewsService {
+@Service
+public interface ${className}Service {
 
 	/**
 	 * 分页查询
@@ -17,7 +18,7 @@ public interface NewsService {
 	 * @return
 	 * @throws Exception
 	 */
-	List<News> listPage(Page page) throws Exception;
+	List<${className}> listPage(Page page) throws Exception;
 
 	/**
 	 * 查询信息
@@ -25,7 +26,7 @@ public interface NewsService {
 	 * @return
 	 * @throws Exception
 	 */
-	List<News> findNewss(NewsExample example) throws Exception;
+	List<${className}> find${className}s(${className}Example example) throws Exception;
 	
 	/**
 	 * 通过主键查询信息
@@ -33,25 +34,25 @@ public interface NewsService {
 	 * @return
 	 * @throws Exception
 	 */
-	News findNewsByKey(int key) throws Exception;
+	${className} find${className}ByKey(int key) throws Exception;
 	
 	/**
 	 * 新增信息
-	 * @param news
+	 * @param ${classNameLower}
 	 * @return
 	 * @throws Exception
 	 */
 	@Transactional(rollbackFor=Exception.class)
-	int insert(News news) throws Exception;
+	int insert(${className} ${classNameLower}) throws Exception;
 	
 	/**
 	 * 更新信息
-	 * @param news
+	 * @param ${classNameLower}
 	 * @return
 	 * @throws Exception
 	 */
 	@Transactional(rollbackFor=Exception.class)
-	int update(News news) throws Exception;
+	int update(${className} ${classNameLower}) throws Exception;
 	
 	/**
 	 * 删除信息
@@ -62,6 +63,5 @@ public interface NewsService {
 	@Transactional(rollbackFor=Exception.class)
 	int delete(int id) throws Exception;
 	
-	List<News> findNews4Index(int toIndex) throws Exception;
 }
 

@@ -62,7 +62,7 @@ public class CompanyServiceImpl implements CompanyService {
 		//根据评分排序
 		example.setOrderByClause("score desc");
 		List<Company> list = this.findCompanys(example);
-		if (CollectionUtils.isNotEmpty(list) && list.size() >= toIndex) {
+		if (CollectionUtils.isNotEmpty(list) && list.size() > toIndex) {
 			list = new ArrayList<Company>(list.subList(0, toIndex));
 		}
 		return list;

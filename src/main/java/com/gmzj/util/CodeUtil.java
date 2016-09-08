@@ -1,12 +1,11 @@
 package com.gmzj.util;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.gmzj.entity.News;
+import com.gmzj.entity.Article;
 
 /** 
  * 类名称：FreemarkerController
@@ -59,6 +58,6 @@ public class CodeUtil {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		CodeUtil.proCode("com/gmzj", News.class, "News");
+		CodeUtil.proCode("com/gmzj", Article.class, "Article");
 	}
 }

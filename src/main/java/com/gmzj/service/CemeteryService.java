@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gmzj.entity.Company;
-import com.gmzj.entity.CompanyExample;
+import com.gmzj.entity.Cemetery;
+import com.gmzj.entity.CemeteryExample;
 import com.gmzj.entity.Page;
 
 
@@ -14,7 +14,7 @@ import com.gmzj.entity.Page;
  * @author Edward
  *
  */
-public interface CompanyService {
+public interface CemeteryService {
 
 	/**
 	 * 分页查询公司信息
@@ -22,7 +22,7 @@ public interface CompanyService {
 	 * @return
 	 * @throws Exception
 	 */
-	List<Company> listPage(Page page) throws Exception;
+	List<Cemetery> listPage(Page page) throws Exception;
 
 	/**
 	 * 查询公司信息
@@ -30,7 +30,7 @@ public interface CompanyService {
 	 * @return
 	 * @throws Exception
 	 */
-	List<Company> findCompanys(CompanyExample example) throws Exception;
+	List<Cemetery> findCompanys(CemeteryExample example) throws Exception;
 	
 	/**
 	 * 通过主键查询公司信息
@@ -38,7 +38,7 @@ public interface CompanyService {
 	 * @return
 	 * @throws Exception
 	 */
-	Company findCompanyByKey(int key) throws Exception;
+	Cemetery findCompanyByKey(int key) throws Exception;
 	
 	/**
 	 * 新增公司信息
@@ -47,7 +47,7 @@ public interface CompanyService {
 	 * @throws Exception
 	 */
 	@Transactional(rollbackFor=Exception.class)
-	int insert(Company company) throws Exception;
+	int insert(Cemetery company) throws Exception;
 	
 	/**
 	 * 更新公司信息
@@ -56,7 +56,7 @@ public interface CompanyService {
 	 * @throws Exception
 	 */
 	@Transactional(rollbackFor=Exception.class)
-	int update(Company company) throws Exception;
+	int update(Cemetery company) throws Exception;
 	
 	/**
 	 * 删除公司信息
@@ -74,5 +74,5 @@ public interface CompanyService {
 	 * @return
 	 * @throws Exception
 	 */
-	List<Company> findCompanys4Index(String type, int toIndex) throws Exception;
+	List<Cemetery> findCompanys4Index(String type, int toIndex) throws Exception;
 }

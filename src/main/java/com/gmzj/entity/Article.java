@@ -2,9 +2,8 @@ package com.gmzj.entity;
 
 import java.util.Date;
 
-import com.gmzj.entity.Company.ComStat;
-import com.gmzj.entity.Company.ComType;
-import com.gmzj.entity.News.NewsStat;
+import com.gmzj.entity.Cemetery.ComStat;
+import com.gmzj.entity.Cemetery.ComType;
 
 public class Article {
     /**

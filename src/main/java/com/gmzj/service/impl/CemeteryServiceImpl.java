@@ -9,43 +9,43 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.gmzj.dao.impl.DaoSupport;
-import com.gmzj.entity.Company;
-import com.gmzj.entity.CompanyExample;
+import com.gmzj.entity.Cemetery;
+import com.gmzj.entity.CemeteryExample;
 import com.gmzj.entity.Page;
-import com.gmzj.service.CompanyService;
+import com.gmzj.service.CemeteryService;
 
 @Service
-public class CompanyServiceImpl implements CompanyService {
+public class CemeteryServiceImpl implements CemeteryService {
 
 	@Autowired
-	private DaoSupport<Company> dao;
+	private DaoSupport<Cemetery> dao;
 	
-	private static String mapperName = "mybatis.files.CompanyMapper";
+	private static String mapperName = "mybatis.files.CemeteryMapper";
 
-	public List<Company> listPage(Page page) throws Exception{
+	public List<Cemetery> listPage(Page page) throws Exception{
 		return dao.findForList(mapperName+".listPage", page);
 	}
 	
-	public List<Company> findCompanys(CompanyExample example) throws Exception{
+	public List<Cemetery> findCompanys(CemeteryExample example) throws Exception{
 		return dao.findForList(mapperName+".selectByExample", example);
 	}
 
-	public Company findCompanyByKey(int key) throws Exception {
+	public Cemetery findCompanyByKey(int key) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.findForObject(mapperName+".selectByPrimaryKey", key);
 	}
 
-	public Company findCompany(CompanyExample example) throws Exception {
+	public Cemetery findCompany(CemeteryExample example) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.findForObject(mapperName+".selectByExample", example);
 	}
 
-	public int insert(Company company) throws Exception {
+	public int insert(Cemetery company) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.insert(mapperName+".insert", company);
 	}
 
-	public int update(Company company) throws Exception {
+	public int update(Cemetery company) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.insert(mapperName+".updateByPrimaryKey", company);
 	}
@@ -55,15 +55,15 @@ public class CompanyServiceImpl implements CompanyService {
 		return dao.delete(mapperName+".deleteByPrimaryKey", id);
 	}
 	
-	@Cacheable(value={"company", "index"})
-	public List<Company> findCompanys4Index(String type, int toIndex) throws Exception{
-		CompanyExample example = new CompanyExample();
+	@Cacheable(value={"cemetery", "index"})
+	public List<Cemetery> findCompanys4Index(String type, int toIndex) throws Exception{
+		CemeteryExample example = new CemeteryExample();
 		example.createCriteria().andTypeEqualTo(type);
 		//根据评分排序
 		example.setOrderByClause("score desc");
-		List<Company> list = this.findCompanys(example);
+		List<Cemetery> list = this.findCompanys(example);
 		if (CollectionUtils.isNotEmpty(list) && list.size() > toIndex) {
-			list = new ArrayList<Company>(list.subList(0, toIndex));
+			list = new ArrayList<Cemetery>(list.subList(0, toIndex));
 		}
 		return list;
 	}

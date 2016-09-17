@@ -14,9 +14,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.gmzj.entity.Company;
+import com.gmzj.entity.Cemetery;
 import com.gmzj.entity.Page;
-import com.gmzj.service.CompanyService;
+import com.gmzj.service.CemeteryService;
 import com.gmzj.util.PageData;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,18 +26,18 @@ public class CompanyServiceImplTest {
 	@Autowired
 	ApplicationContext ctx;
 	
-	private CompanyService companyService;
+	private CemeteryService companyService;
 	
 	@Before
 	public void setUp() throws Exception {
-		companyService = ctx.getBean(CompanyServiceImpl.class);
+		companyService = ctx.getBean(CemeteryServiceImpl.class);
 	}
 
 	@Test
 	public void testListPage() throws Exception {
 		Page page = new Page();
 		page.setParm(new PageData());
-		List<Company> list = companyService.listPage(page);
+		List<Cemetery> list = companyService.listPage(page);
 		System.out.println(list.size());
 	}
 

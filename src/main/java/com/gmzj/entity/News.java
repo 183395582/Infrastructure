@@ -2,7 +2,7 @@ package com.gmzj.entity;
 
 import java.util.Date;
 
-import com.gmzj.entity.Company.ComStat;
+import com.gmzj.entity.Cemetery.ComStat;
 
 public class News {
     /**

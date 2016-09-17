@@ -30,7 +30,7 @@ public interface CemeteryService {
 	 * @return
 	 * @throws Exception
 	 */
-	List<Cemetery> findCompanys(CemeteryExample example) throws Exception;
+	List<Cemetery> findCemeterys(CemeteryExample example) throws Exception;
 	
 	/**
 	 * 通过主键查询公司信息
@@ -38,25 +38,25 @@ public interface CemeteryService {
 	 * @return
 	 * @throws Exception
 	 */
-	Cemetery findCompanyByKey(int key) throws Exception;
+	Cemetery findCemeteryByKey(int key) throws Exception;
 	
 	/**
 	 * 新增公司信息
-	 * @param company
+	 * @param cemetery
 	 * @return
 	 * @throws Exception
 	 */
 	@Transactional(rollbackFor=Exception.class)
-	int insert(Cemetery company) throws Exception;
+	int insert(Cemetery cemetery) throws Exception;
 	
 	/**
 	 * 更新公司信息
-	 * @param company
+	 * @param cemetery
 	 * @return
 	 * @throws Exception
 	 */
 	@Transactional(rollbackFor=Exception.class)
-	int update(Cemetery company) throws Exception;
+	int update(Cemetery cemetery) throws Exception;
 	
 	/**
 	 * 删除公司信息
@@ -74,5 +74,5 @@ public interface CemeteryService {
 	 * @return
 	 * @throws Exception
 	 */
-	List<Cemetery> findCompanys4Index(String type, int toIndex) throws Exception;
+	List<Cemetery> findCemeterys4Index(String type, int toIndex) throws Exception;
 }

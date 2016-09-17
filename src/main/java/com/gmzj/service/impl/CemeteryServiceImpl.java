@@ -26,28 +26,28 @@ public class CemeteryServiceImpl implements CemeteryService {
 		return dao.findForList(mapperName+".listPage", page);
 	}
 	
-	public List<Cemetery> findCompanys(CemeteryExample example) throws Exception{
+	public List<Cemetery> findCemeterys(CemeteryExample example) throws Exception{
 		return dao.findForList(mapperName+".selectByExample", example);
 	}
 
-	public Cemetery findCompanyByKey(int key) throws Exception {
+	public Cemetery findCemeteryByKey(int key) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.findForObject(mapperName+".selectByPrimaryKey", key);
 	}
 
-	public Cemetery findCompany(CemeteryExample example) throws Exception {
+	public Cemetery findCemetery(CemeteryExample example) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.findForObject(mapperName+".selectByExample", example);
 	}
 
-	public int insert(Cemetery company) throws Exception {
+	public int insert(Cemetery cemetery) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.insert(mapperName+".insert", company);
+		return dao.insert(mapperName+".insert", cemetery);
 	}
 
-	public int update(Cemetery company) throws Exception {
+	public int update(Cemetery cemetery) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.insert(mapperName+".updateByPrimaryKey", company);
+		return dao.insert(mapperName+".updateByPrimaryKey", cemetery);
 	}
 
 	public int delete(int id) throws Exception {
@@ -56,12 +56,12 @@ public class CemeteryServiceImpl implements CemeteryService {
 	}
 	
 	@Cacheable(value={"cemetery", "index"})
-	public List<Cemetery> findCompanys4Index(String type, int toIndex) throws Exception{
+	public List<Cemetery> findCemeterys4Index(String type, int toIndex) throws Exception{
 		CemeteryExample example = new CemeteryExample();
 		example.createCriteria().andTypeEqualTo(type);
 		//根据评分排序
 		example.setOrderByClause("score desc");
-		List<Cemetery> list = this.findCompanys(example);
+		List<Cemetery> list = this.findCemeterys(example);
 		if (CollectionUtils.isNotEmpty(list) && list.size() > toIndex) {
 			list = new ArrayList<Cemetery>(list.subList(0, toIndex));
 		}

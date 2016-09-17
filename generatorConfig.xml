@@ -11,7 +11,7 @@
 		<sqlMapGenerator targetPackage="mybatis.files" targetProject="Infrastructure/src/main/resources/" />
 		
 		<javaClientGenerator targetPackage="mybatis.files" targetProject="Infrastructure/src/main/resources/" type="XMLMAPPER" />
-		<table tableName="t_article" domainObjectName="Article">
+		<table tableName="t_cemetery" domainObjectName="Cemetery">
 		</table>
 			<!-- <columnOverride column="fi_DepNo" javaType="Long" property="depNo" /> -->
 		<!-- <table tableName="t_regionmap" domainObjectName="RegionMap">

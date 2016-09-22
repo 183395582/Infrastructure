@@ -30,7 +30,7 @@ public class Const {
 	public static final String SMS1   = "admin/config/SMS1.txt";		//短信账户配置路径1
 	public static final String SMS2   = "admin/config/SMS2.txt";		//短信账户配置路径2
 	
-	public static final String FILEPATHIMG = "uploadFiles/uploadImgs/";	//图片上传路径
+	public static final String FILEPATHIMG = "e:/temp/uploadFiles/uploadImgs/";	//图片上传路径
 	public static final String FILEPATHFILE = "uploadFiles/file/";		//文件上传路径
 	
 	public static final String NO_INTERCEPTOR_PATH = ".*/((login)|(logout)|(code)|(app)|(static)|(main)|(websocket)).*";	//不对匹配该值的访问路径拦截（正则）

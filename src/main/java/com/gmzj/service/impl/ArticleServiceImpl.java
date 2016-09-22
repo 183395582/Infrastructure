@@ -47,7 +47,7 @@ public class ArticleServiceImpl implements ArticleService{
 
 	public int update(Article article) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.insert(mapperName+".updateByPrimaryKey", article);
+		return dao.update(mapperName+".updateByPrimaryKey", article);
 	}
 
 	public int delete(int id) throws Exception {

@@ -45,7 +45,7 @@ public class ${className}ServiceImpl implements ${className}Service{
 
 	public int update(${className} ${classNameLower}) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.insert(mapperName+".updateByPrimaryKey", ${classNameLower});
+		return dao.update(mapperName+".updateByPrimaryKey", ${classNameLower});
 	}
 
 	public int delete(int id) throws Exception {

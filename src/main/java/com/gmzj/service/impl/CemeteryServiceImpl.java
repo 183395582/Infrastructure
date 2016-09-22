@@ -47,7 +47,7 @@ public class CemeteryServiceImpl implements CemeteryService {
 
 	public int update(Cemetery cemetery) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.insert(mapperName+".updateByPrimaryKey", cemetery);
+		return dao.update(mapperName+".updateByPrimaryKey", cemetery);
 	}
 
 	public int delete(int id) throws Exception {

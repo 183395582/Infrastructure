@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.gmzj.entity.Article;
+import com.gmzj.entity.Pic;
 
 /** 
  * 类名称：FreemarkerController
@@ -18,8 +18,9 @@ public class CodeUtil {
 	/**
 	 * 生成代码
 	 */
-	public static void proCode(String packageName, Class<?> c, String className) throws Exception{
+	public static void proCode(String packageName, Class<?> c) throws Exception{
 		Map<String,Object> root = new HashMap<String,Object>();		//创建数据模型
+		String className = c.getSimpleName();
 		root.put("fieldList", Arrays.asList(c.getDeclaredFields()));
 		root.put("packageName", packageName);						//包名
 		root.put("className", className);							//类名
@@ -58,6 +59,6 @@ public class CodeUtil {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		CodeUtil.proCode("com/gmzj", Article.class, "Article");
+		CodeUtil.proCode("com/gmzj", Pic.class);
 	}
 }

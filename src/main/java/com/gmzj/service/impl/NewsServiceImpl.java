@@ -47,7 +47,7 @@ public class NewsServiceImpl implements NewsService{
 
 	public int update(News news) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.insert(mapperName+".updateByPrimaryKey", news);
+		return dao.update(mapperName+".updateByPrimaryKey", news);
 	}
 
 	public int delete(int id) throws Exception {

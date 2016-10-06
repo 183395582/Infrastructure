@@ -57,7 +57,7 @@ public class PicServiceImpl implements PicService{
 	public boolean updateSeqs(List<Pic> list) throws Exception {
 		if(CollectionUtils.isNotEmpty(list)){
 			for(Pic pic:list){
-				dao.update(mapperName+".updateByPrimaryKey", pic);
+				dao.update(mapperName+".updateByPrimaryKeySelective", pic);
 			}
 		}
 		return true;

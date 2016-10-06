@@ -305,5 +305,6 @@
 		<if test="parm.resId != null and parm.resId != ''">
 			and res_id = #{parm.resId}
 		</if>
+		order by SEQ
 	</select>
 </mapper>

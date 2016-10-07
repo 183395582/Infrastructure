@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.gmzj.entity.CemType;
 import com.gmzj.entity.Pic;
 
 /** 
@@ -16,12 +17,17 @@ import com.gmzj.entity.Pic;
 public class CodeUtil {
 	
 	/**
-	 * 生成代码
+	 * 
+	 * @param packageName 包名
+	 * @param name 描述
+	 * @param c 类
+	 * @throws Exception
 	 */
-	public static void proCode(String packageName, Class<?> c) throws Exception{
+	public static void proCode(String packageName, String name, Class<?> c) throws Exception{
 		Map<String,Object> root = new HashMap<String,Object>();		//创建数据模型
 		String className = c.getSimpleName();
 		root.put("fieldList", Arrays.asList(c.getDeclaredFields()));
+		root.put("name", name);										//描述
 		root.put("packageName", packageName);						//包名
 		root.put("className", className);							//类名
 		root.put("classNameLower", className.toLowerCase());		//类名(全小写)
@@ -59,6 +65,6 @@ public class CodeUtil {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		CodeUtil.proCode("com/gmzj", Pic.class);
+		CodeUtil.proCode("com/gmzj", "墓型", CemType.class);
 	}
 }

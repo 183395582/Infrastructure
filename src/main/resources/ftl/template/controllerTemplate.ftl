@@ -55,7 +55,7 @@ public class ${className}Controller {
 	public String showCreateForm(Model model) {
 		setCommonData(model);
 		model.addAttribute("${classNameLower}", new ${className}());
-		model.addAttribute("op", "公司信息新增");
+		model.addAttribute("op", "${name}信息新增");
 		return "${classNameLower}/edit";
 	}
 
@@ -70,7 +70,7 @@ public class ${className}Controller {
 	public String showUpdateForm(@PathVariable("id") int id, Model model) throws Exception {
 		setCommonData(model);
 		model.addAttribute("${classNameLower}", service.find${className}ByKey(id));
-		model.addAttribute("op", "公司信息修改");
+		model.addAttribute("op", "${name}信息修改");
 		return "${classNameLower}/edit";
 	}
 
@@ -84,7 +84,7 @@ public class ${className}Controller {
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String delete(int id, Model model) throws Exception {
-//		int num = service.delete(id);
+		int num = service.delete(id);
 		int num = 0;
 		if (num != 1) throw new BusinessException("删除失败");
 		model.addAttribute("msg", "删除成功");

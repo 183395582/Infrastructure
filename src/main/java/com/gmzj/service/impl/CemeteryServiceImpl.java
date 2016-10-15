@@ -1,9 +1,9 @@
 package com.gmzj.service.impl;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -57,15 +57,20 @@ public class CemeteryServiceImpl implements CemeteryService {
 	
 	@Cacheable(value={"cemetery", "index"})
 	public List<Cemetery> findCemeterys4Index(String type, int toIndex) throws Exception{
+		Map<String, Object> param = new HashMap<String, Object>(2);
 		CemeteryExample example = new CemeteryExample();
-		example.createCriteria().andTypeEqualTo(type);
-		//根据评分排序
-		example.setOrderByClause("score desc");
-		List<Cemetery> list = this.findCemeterys(example);
-		if (CollectionUtils.isNotEmpty(list) && list.size() > toIndex) {
-			list = new ArrayList<Cemetery>(list.subList(0, toIndex));
-		}
-		return list;
+//		example.createCriteria().andTypeEqualTo(type);
+		param.put("example", example);
+		param.put("num", 4);
+		return dao.findForList(mapperName+".selectByExample_limit", example);
+//		//根据评分排序
+//		example.setOrderByClause("score desc");
+//		List<Cemetery> list = this.findCemeterys(example);
+//		if (CollectionUtils.isNotEmpty(list) && list.size() > toIndex) {
+//			list = new ArrayList<Cemetery>(list.subList(0, toIndex));
+//		}
+//		return list;
+		
 	}
 
 }

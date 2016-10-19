@@ -502,4 +502,15 @@
       stat = #{stat,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="listPage" parameterType="page" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_cem_type where 1 = 1
+		<if test="parm.name != null and parm.name != ''">
+			and name LIKE CONCAT(CONCAT('%', #{parm.name}),'%')
+		</if>
+		<if test="parm.code != null and parm.code != ''">
+			and code LIKE CONCAT(CONCAT('%', #{parm.code}),'%')
+		</if>
+	</select>
 </mapper>

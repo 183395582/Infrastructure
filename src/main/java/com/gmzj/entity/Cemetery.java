@@ -913,7 +913,7 @@ public class Cemetery implements Serializable {
 	}
 
 	public static enum ComType implements IntEnum<ComType>{
-		fw01("01","公墓陵园"), fw02("02", "殡仪服务"), fw03("03", "风水堪舆");
+		gmly("01","公墓陵园"), byfw("02", "殡仪服务"), fsky("03", "风水堪舆");
 
 		private final String index;
 		private final String name;

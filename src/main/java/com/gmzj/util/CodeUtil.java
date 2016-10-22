@@ -5,9 +5,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.gmzj.entity.AreaInfo;
-import com.gmzj.entity.CemType;
-import com.gmzj.entity.Pic;
 import com.gmzj.entity.RegionMap;
 
 /** 

@@ -5,8 +5,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.gmzj.entity.AreaInfo;
 import com.gmzj.entity.CemType;
 import com.gmzj.entity.Pic;
+import com.gmzj.entity.RegionMap;
 
 /** 
  * 类名称：FreemarkerController
@@ -65,6 +67,6 @@ public class CodeUtil {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		CodeUtil.proCode("com/gmzj", "墓型", CemType.class);
+		CodeUtil.proCode("com/gmzj", "墓型", RegionMap.class);
 	}
 }

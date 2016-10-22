@@ -85,7 +85,6 @@ public class ${className}Controller {
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String delete(int id, Model model) throws Exception {
 		int num = service.delete(id);
-		int num = 0;
 		if (num != 1) throw new BusinessException("删除失败");
 		model.addAttribute("msg", "删除成功");
 		return "redirect:/${classNameLower}/";

@@ -3,6 +3,8 @@ package com.gmzj.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.gmzj.dao.impl.DaoSupport;
@@ -10,7 +12,6 @@ import com.gmzj.entity.CemType;
 import com.gmzj.entity.CemTypeExample;
 import com.gmzj.entity.Page;
 import com.gmzj.service.CemTypeService;
-
 
 @Service
 public class CemTypeServiceImpl implements CemTypeService{
@@ -28,6 +29,7 @@ public class CemTypeServiceImpl implements CemTypeService{
 		return dao.findForList(mapperName+".selectByExample", example);
 	}
 
+    @Cacheable(value="cemType")
 	public CemType findCemTypeByKey(int key) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.findForObject(mapperName+".selectByPrimaryKey", key);
@@ -38,16 +40,19 @@ public class CemTypeServiceImpl implements CemTypeService{
 		return dao.findForObject(mapperName+".selectByExample", example);
 	}
 
+    @CacheEvict(value="cemTypes", allEntries=true)
 	public int insert(CemType cemtype) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.insert(mapperName+".insert", cemtype);
 	}
 
+    @CacheEvict(value="cemTypes", allEntries=true)
 	public int update(CemType cemtype) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.update(mapperName+".updateByPrimaryKey", cemtype);
 	}
 
+    @CacheEvict(value="cemTypes", allEntries=true)
 	public int delete(int id) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.delete(mapperName+".deleteByPrimaryKey", id);

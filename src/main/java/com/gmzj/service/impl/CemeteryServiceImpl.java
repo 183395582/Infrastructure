@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.gmzj.dao.impl.DaoSupport;
@@ -33,6 +34,7 @@ public class CemeteryServiceImpl implements CemeteryService {
 		return list;
 	}
 
+    @Cacheable(value="cemetery")
 	public Cemetery findCemeteryByKey(int key) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.findForObject(mapperName+".selectByPrimaryKey", key);

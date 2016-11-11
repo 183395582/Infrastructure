@@ -1,5 +1,7 @@
 package com.gmzj.service.impl;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.gmzj.entity.CemeteryExample;
 import com.gmzj.service.CemeteryService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -17,16 +20,16 @@ public class CemeteryServiceImplTest {
 	@Autowired
 	ApplicationContext ctx;
 	
-	private CemeteryService companyService;
+	private CemeteryService cemeteryService;
 	
 	@Before
 	public void setUp() throws Exception {
-		companyService = ctx.getBean(CemeteryServiceImpl.class);
+		cemeteryService = ctx.getBean(CemeteryServiceImpl.class);
 	}
 
 	@Test
 	public void test() throws Exception {
-//		List list = companyService.findCemeterys4Index("", 4);
+//		List list = cemeteryService.findCemeterys(new CemeteryExample());
 //		System.out.println(list.size());
 	}
 	

@@ -1,9 +1,12 @@
 package com.gmzj.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.gmzj.util.Const;
 import com.gmzj.util.Tools;
 
-public class Page {
+public class Page<T> {
 	
 	private int showCount; //每页显示记录数
 	private int totalPage;		//总页数
@@ -12,8 +15,7 @@ public class Page {
 	private int currentResult;	//当前记录起始索引
 	private boolean entityOrField;	//true:需要分页的地方，传入的参数就是Page实体；false:需要分页的地方，传入的参数所代表的实体拥有Page属性
 	private Object parm;
-	
-
+	private List<T> result = new ArrayList<T>();// 查询结果
 	
 	public Page(){
 		try {
@@ -143,5 +145,12 @@ public class Page {
 	public void setParm(Object parm) {
 		this.parm = parm;
 	}
-	
+
+	public List<T> getResult() {
+		return result;
+	}
+
+	public void setResult(List<T> result) {
+		this.result = result;
+	}
 }

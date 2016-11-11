@@ -3,12 +3,11 @@ package com.gmzj.entity.custom;
 import com.gmzj.entity.CemType;
 
 
-public class CemTypeCustom {
+@SuppressWarnings("serial")
+public class CemTypeCustom extends CemType{
 	
 	private String cemeteryName;
 	
-	private CemType cemType;
-
 	public String getCemeteryName() {
 		return cemeteryName;
 	}
@@ -17,12 +16,4 @@ public class CemTypeCustom {
 		this.cemeteryName = cemeteryName;
 	}
 
-	public CemType getCemType() {
-		return cemType;
-	}
-
-	public void setCemType(CemType cemType) {
-		this.cemType = cemType;
-	}
-	
 }

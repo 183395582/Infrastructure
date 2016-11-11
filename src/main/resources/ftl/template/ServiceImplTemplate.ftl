@@ -38,12 +38,12 @@ public class ${className}ServiceImpl implements ${className}Service{
 		return dao.findForObject(mapperName+".selectByExample", example);
 	}
 
-	public int insert(${className} ${classNameLower}) throws Exception {
+	public int insert(${className} ${className?uncap_first}) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.insert(mapperName+".insert", ${classNameLower});
 	}
 
-	public int update(${className} ${classNameLower}) throws Exception {
+	public int update(${className} ${className?uncap_first}) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.update(mapperName+".updateByPrimaryKey", ${classNameLower});
 	}

@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.ParseException;
@@ -20,10 +22,13 @@ import java.util.regex.Pattern;
 
 import net.sf.json.JSONObject;
 
+import org.apache.commons.beanutils.MethodUtils;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Tools {
-	
+	static Logger logger = LoggerFactory.getLogger(Tools.class);
 	/**
 	 * 随机生成六位数验证码 
 	 * @return
@@ -297,5 +302,47 @@ public class Tools {
 	            e.printStackTrace();
 	        } 
 	        return point;
+	}
+	
+	/**
+	 * 将父类属性拷贝到子类中
+	 * @param <T>
+	 * @param obj
+	 * @param z
+	 * @return
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 */
+	public static <T> T copyProperty(Object obj, Class<T> z) {
+		T instance = null;
+		try {
+			instance = z.newInstance();
+			Field[] fields =  obj.getClass().getDeclaredFields();
+			if (fields.length <= 0) return instance;
+			for (Field field : fields) {
+				String getMethodName = "get" + StringUtils.capitalize(field.getName());
+				String setMethodName = "set" + StringUtils.capitalize(field.getName());
+				if (obj != null) {
+					try{
+						Object metReslut = MethodUtils.invokeExactMethod(obj, getMethodName, null);
+						if (metReslut == null) continue;
+						MethodUtils.invokeExactMethod(instance, setMethodName, metReslut);
+					} catch (NoSuchMethodException e) {
+						// TODO Auto-generated catch block
+						logger.error("拷贝属性执行异常", e);
+					}
+				}
+			}
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			logger.error("拷贝属性执行异常", e);
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			logger.error("拷贝属性执行异常", e);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			logger.error("拷贝属性执行异常", e);
+		}
+		return instance;
 	}
 }

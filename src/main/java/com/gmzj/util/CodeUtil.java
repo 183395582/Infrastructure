@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.gmzj.entity.CemArticle;
 import com.gmzj.entity.RegionMap;
 
 /** 
@@ -29,7 +30,6 @@ public class CodeUtil {
 		root.put("name", name);										//描述
 		root.put("packageName", packageName);						//包名
 		root.put("className", className);							//类名
-		root.put("classNameLower", className.toLowerCase());		//类名(全小写)
 		root.put("classNameUpper", className.toUpperCase());		//类名(全大写)
 		root.put("nowDate", new Date());							//当前日期
 		
@@ -64,6 +64,6 @@ public class CodeUtil {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		CodeUtil.proCode("com/gmzj", "墓型", RegionMap.class);
+		CodeUtil.proCode("com/gmzj", "墓地咨询、风水、指南", CemArticle.class);
 	}
 }

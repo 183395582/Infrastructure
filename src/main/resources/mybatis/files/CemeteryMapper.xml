@@ -795,5 +795,8 @@
 		<if test="parm.name != null and parm.name != ''">
 			and name LIKE CONCAT(CONCAT('%', #{parm.name}),'%')
 		</if>
+		<if test="parm.type != null and parm.type != ''">
+			and type = #{parm.type}
+		</if>
 	</select>
 </mapper>

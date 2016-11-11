@@ -25,7 +25,7 @@ import com.gmzj.service.${className}Service;
 import com.gmzj.web.exception.BusinessException;
 
 @Controller
-@RequestMapping("/${classNameLower}")
+@RequestMapping("/${className?uncap_first}")
 public class ${className}Controller {
 	protected final Logger logger = LoggerFactory.getLogger(this.getClass()); 
 
@@ -42,44 +42,44 @@ public class ${className}Controller {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String list(Model model, Page page, ${className} ${classNameLower}) throws Exception {
-		page.setParm(${classNameLower});
+	public String list(Model model, Page page, ${className} ${className?uncap_first}) throws Exception {
+		page.setParm(${className?uncap_first});
 		List<${className}> list = service.listPage(page);
 		model.addAttribute("contentModel", list);
 		model.addAttribute("page", page);
-		model.addAttribute("searchModel", ${classNameLower});
-		return "${classNameLower}/list";
+		model.addAttribute("searchModel", ${className?uncap_first});
+		return "${className?uncap_first}/list";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String showCreateForm(Model model) {
 		setCommonData(model);
-		model.addAttribute("${classNameLower}", new ${className}());
+		model.addAttribute("${className?uncap_first}", new ${className}());
 		model.addAttribute("op", "${name}信息新增");
-		return "${classNameLower}/edit";
+		return "${className?uncap_first}/edit";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String create(${className} ${classNameLower}, RedirectAttributes redirectAttributes) throws Exception {
-		service.insert(${classNameLower});
+	public String create(${className} ${className?uncap_first}, RedirectAttributes redirectAttributes) throws Exception {
+		service.insert(${className?uncap_first});
 		redirectAttributes.addFlashAttribute("msg", "新增成功");
-		return "redirect:/${classNameLower}/";
+		return "redirect:/${className?uncap_first}/";
 	}
 
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.GET)
 	public String showUpdateForm(@PathVariable("id") int id, Model model) throws Exception {
 		setCommonData(model);
-		model.addAttribute("${classNameLower}", service.find${className}ByKey(id));
+		model.addAttribute("${className?uncap_first}", service.find${className}ByKey(id));
 		model.addAttribute("op", "${name}信息修改");
-		return "${classNameLower}/edit";
+		return "${className?uncap_first}/edit";
 	}
 
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.POST)
-	public String update(${className} ${classNameLower}, Model model) throws Exception {
-		int num = service.update(${classNameLower});
+	public String update(${className} ${className?uncap_first}, Model model) throws Exception {
+		int num = service.update(${className?uncap_first});
 		if (num != 1) throw new BusinessException("修改失败");
 		model.addAttribute("msg", "修改成功");
-		return "${classNameLower}/edit";
+		return "${className?uncap_first}/edit";
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
@@ -87,7 +87,7 @@ public class ${className}Controller {
 		int num = service.delete(id);
 		if (num != 1) throw new BusinessException("删除失败");
 		model.addAttribute("msg", "删除成功");
-		return "redirect:/${classNameLower}/";
+		return "redirect:/${className?uncap_first}/";
 	}
 
 	private void setCommonData(Model model) {

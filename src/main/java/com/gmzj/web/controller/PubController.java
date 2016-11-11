@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -41,6 +42,26 @@ public class PubController{
 		map.put("msg", null);
 		map.put("data", list);
 		return map;
+    }
+	
+	/**
+	 * 根据城市名称查询省市县
+	 * @param req
+	 * @return
+	 * @throws Exception 
+	 */
+	@ResponseBody
+	@RequestMapping(value="findRegionByName", method = RequestMethod.GET)
+	public Map<String, Object> ajaxfindRegionByName(String cityName) throws Exception {  
+		RegionMapExample example = new RegionMapExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andNameLike(cityName+"%");
+		List<RegionMap> list = regionMapService.findRegionMaps(example);
+		if (CollectionUtils.isNotEmpty(list) && list.size() == 1) {
+			RegionMap regionMap = list.get(0);
+			return this.ajaxfindRegion(regionMap.getNo());
+		}
+		return null;
     }
 	
 	/**

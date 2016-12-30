@@ -345,4 +345,13 @@
       status = #{status,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  	<select id="listPage" parameterType="page" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_cem_article where 1 = 1
+		<if test="parm.type != null and parm.type != ''">
+			and type = #{parm.type}
+		</if>
+	</select>
 </mapper>
